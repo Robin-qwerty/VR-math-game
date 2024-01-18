@@ -14,8 +14,6 @@ public class FireBulletOnActivate : MonoBehaviour
     {
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
         grabbable.activated.AddListener(fireBullet);
-
-
     }
 
     // Update is called once per frame
