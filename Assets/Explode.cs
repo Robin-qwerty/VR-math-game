@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Explode : MonoBehaviour
 {
-    public int cubesPerAxis = 5;
+    public int cubesPerAxis = 1;
     public float delay = 1f;
     public float force = 300f;
     public float radius = 2f;
+    public bool answer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,6 @@ public class Explode : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Check if the colliding object has a specific tag (e.g., "Bullet").
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Main();
@@ -38,7 +38,14 @@ public class Explode : MonoBehaviour
         }
 
         Destroy(gameObject);
-        ScoreManager.scoreCount += 1;
+        if (answer) 
+        {
+            ScoreManager.scoreCount += 1;
+        } else
+        {
+            ScoreManager.scoreCount -= 1;
+        }
+        
     }
 
     void CreateCube(Vector3 coordinates)
